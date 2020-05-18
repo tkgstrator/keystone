@@ -26,9 +26,9 @@ install3:
 	rm -rf prebuilt/win64/keystone.dll
 	rm -rf prebuilt/win32/keystone.dll
 	if test -n "${DESTDIR}"; then \
-		python3 setup.py build -b $(OBJDIR) install --root="${DESTDIR}"; \
+		python3.7 setup.py build -b $(OBJDIR) install --root="${DESTDIR}"; \
 	else \
-		python3 setup.py build -b $(OBJDIR) install; \
+		python3.7 setup.py build -b $(OBJDIR) install; \
 	fi
 
 # build & upload PyPi package with source code of the core
@@ -47,7 +47,7 @@ sdist3:
 	rm -rf prebuilt/win32/keystone.dll
 	cp README.pypi-src README
 	cp PKG-INFO.src PKG-INFO
-	python3 setup.py sdist register upload
+	python3.7 setup.py sdist register upload
 
 # build & upload PyPi package with prebuilt core
 # NOTE: be sure to have precompiled core under prebuilt/win*/ beforehand
@@ -63,7 +63,7 @@ sdist3_win:
 	rm -rf src/ dist/
 	cp README.pypi-win README
 	cp PKG-INFO.win PKG-INFO
-	python3 setup.py sdist register upload
+	python3.7 setup.py sdist register upload
 
 clean:
 	rm -rf $(OBJDIR) src/ dist/ README
